@@ -1,21 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="" method="get">
-        <p style="color: blue;"><strong>欢迎注册会员</strong></p>
-        <label for="phonenumber">手机号码:</label>
-        <input type="text" id="phonenumber" name="phonenumber" maxlength="11" placeholder="11位手机号"> <span style="color: red;">必填</span><br>
-        <label for="pwd">创建密码:</label>
-        <input type="password" id="password" name="password" maxlength="8" placeholder="8位密码"><span style="color: red;">必填</span><br>
-        <label for="email">注册邮箱:</label>
-        <input type="text" id="email" name="email" placeholder="例如：wustzz@sina.com "><span style="color: red;">必填</span> <br>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>homework1</title>
+    <link rel="stylesheet" href="homework2.css">
+  </head>
+  <body>
+    <form action="" method="get" class="formarea" enctype="multipart/form-data">
+      <p style="color: blue"><strong>欢迎注册会员</strong></p>
+      <label for="phonenumber" class="f1">手机号码:</label>
 
+      <input
+        type="text"
+        id="phonenumber"
+        name="phonenumber"
+        maxlength="11"
+        placeholder="11位手机号"
+      />
+      <span style="color: red">必填</span><br />
 
+      <label for="pwd" class="f1">创建密码:</label>
+
+      <input
+        type="password"
+        id="pwd"
+        name="password"
+        maxlength="8"
+        placeholder="8位密码"
+      />
+      <span style="color: red">必填</span><br />
+
+      <label for="email" class="f1">注册邮箱:</label>
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="例如：wustzz@sina.com "
+      />
+      <span style="color: red">必填</span> <br />
+
+      <label for="ipt" class="f1">验证码:</label>
+      <input type="text" name="ipt" id="ipt" />
+      <div class="show"></div>
+      <a href="javascript:getNewCode()" ;
+        ><img src="前端素材\images\arrow_03.png" alt="" class="img1"
+      /></a>
+      <br />
+
+      <button id="btn">提交</button><br />
+      <script type="text/javascript">
+        const show = document.querySelector(".show");
+        const ipt = document.querySelector("#ipt");
+        const btn = document.querySelector("#btn");
+
+        btn.addEventListener("click", function () {
+          if (show.innerHTML === ipt.value) {
+            alert("验证通过！");
+          } else {
+            alert("验证码不正确，请重新输入！");
+          }
+        });
+        getNewCode();
+
+        function getNewCode() {
+          show.innerHTML = getCode();
+        }
+
+        function getCode() {
+          const arr = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+          let codeStr = "";
+          for (let i = 0; i < 4; i++) {
+            let index = parseInt(Math.random() * arr.length);
+            codeStr += arr[index];
+          }
+          return codeStr;
+        }
+      //运用js进行验证码的随机刷新以及判断输入验证码是否正确 </script>
+      <label for="sex" class="f1">性别:</label>
+      <span
+        ><input type="radio" id="sex" name="sex" />男 &nbsp;&nbsp;&nbsp;</span
+      ><span><input type="radio" id="sex" name="sex" />女</span><br />
+      <label for="bir" class="f1">生日:</label>
+      <input type="date" name="mydate" id="bir" /><br />
+      <label for="age" class="f1">年龄:</label>
+      <input type="text" name="age" id="age" /><br />
+      <span
+        ><label for="jigauan" class="f1">籍贯:</label>
+        <select name="major" id="jiguan">
+          <option value="0">湖男</option>
+          <option value="1" selected="selected">湖北</option>
+          <option value="2">山东</option>
+        </select>
+        <select name="major" id="jiguan1">
+          <option value="0">黄冈</option>
+          <option value="1" selected="selected">武汉</option>
+          <option value="2">黄石</option>
+        </select> </span
+      ><br />
+      <label for="xueli" class="f1">学历:</label>
+      <select name="major" id="xueli">
+        <option value="0">专科</option>
+        <option value="1" selected="selected">本科</option>
+        <option value="2">研究生</option></select
+      ><br />
+      <label for="yuexin" class="f1">月薪:</label>
+      <input
+        type="range"
+        id="score"
+        name="score"
+        min="6000.0"
+        max="100000.0"
+        step="100"
+        value="60.0"
+      />
+      <span id="msg"></span>
+      <script>
+        var msg = document.getElementById("msg"); // 根据id值找到span元素
+        window.onload = function () {
+          msg.innerHTML = document.getElementById("score").value; // 获取区间域初始value值
+        };
+        document.getElementById("score").onchange = function () {
+          msg.innerHTML = this.value; // 将当前区间域的value作为span元素的内容
+        };
+      </script><br>
+      <label for="habit" class="f1">个人爱好:</label>
+      <input type="checkbox" name="h" id="habit">唱歌&nbsp;
+      <input type="checkbox" name="h" id="habit">跑步&nbsp;
+      <input type="checkbox" name="h" id="habit">游泳&nbsp;
+      <br>
+      <label for="" class="f1">个人图片:</label>
+      
+        <input type="file" id="test-image-file" name="test">
+        <p>图片预览：</p>
+<p></p>
+<div id="test-image-preview" style="border: 1px solid silver; width: 50%; height: 200px; background-repeat: no-repeat; 
+background-position: center;">
+</div>
+<p></p>
+<p>
+<input type="file" id="test-image-file" name="test">
+</p>
+<p id="test-file-info">没有选择文件</p>
+        
+    
+        <script>
+        var fileInput = document.getElementById('test-image-file');
+        var info = document.getElementById('test-file-info');
+        var preview = document.getElementById('test-image-preview'); 
+        fileInput.addEventListener('change', function () { // 监听change事件
+         preview.style.backgroundImage = ''; // 清除背景图片 
+         if (!fileInput.value) {
+        info.innerHTML = '没有选择文件';
+        return;
+        } 
+        var file = fileInput.files[0]; // 获取File引用
+         // 获取File信息:
+        info.innerHTML = '文件: ' + file.name + '<br>' + '大小: ' + file.size + '<br>' + '修改: ' + file.lastModifiedDate;
+        if (file.type !== 'image/jpeg' && file.type !== 'image/png' && file.type !== 'image/gif') {
+        alert('不是有效的图片文件!');
+        return;
+        } 
+        var reader = new FileReader(); // 读取文件
+         reader.onload = function (e) { // 发起一个异步操作来读取文件内容
+        var data = e.target.result; // data串形如： 'data:image/jpeg;base64,/9j/4AAQSk...(base64编码)...' 
+        preview.style.backgroundImage = 'url(' + data + ')';
+        }; 
+        reader.readAsDataURL(file); // 以DataURL的形式读取文件
+         });
+        </script><br>
+        <label for="jianjie" class="f1" >个人简介:</label>
+        <textarea name="intro" cols="20" rows=8" id="jianjie"></textarea><br>
+        <input type="submit" name="" id="" value="提交" class="f1">
+        <input type="reset" value="重填" class="f1">
     </form>
-</body>
+  </body>
 </html>
